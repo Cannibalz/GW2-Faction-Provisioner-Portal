@@ -34,9 +34,6 @@ $(function(){
                         [15391,14563,13976,10691,11921,11341],[36779,36812,36780,36806,36842,36844]];
     var flattenArray = [].concat.apply([], itemIDiArray).sort();
     var unduplicatedArray = Array.from(new Set(flattenArray));
-    console.log(unduplicatedArray.length);
-    console.log(flattenArray);
-    console.log(itemIDiArray);
     $.ajax({
       dataType: "json",
       url: "http://api.gw2tp.com/1/items?ids="+itemIDiArray.toString()+"&fields=name,sell,img",
@@ -75,7 +72,6 @@ $(function(){
             var copper = stringPrice.substring(sLength-2,sLength) + "<img src='assets/Copper_coin.png'>";
             coinedPrice += copper;
             lowestitemName = "<a style='color:blue' onClick='copy(\"" + window.btoa(lowestitemName) + "\")' >" + lowestitemName + "</a>";
-            console.log(lowestitemName);
             $("#notsure tr:last").after('<tr><td>'+npcInfo[i][0]+'</td><td>'+ "<a style='color:blue' onClick='copy(\"" + window.btoa(npcInfo[i][1]) + "\")' >" +npcInfo[i][1]+ "</a>" +'</td><td><img width="10%" height="10%" src="'+itemImage+'">'+lowestitemName+'</td><td>'+coinedPrice+'</td></tr>');
         }
     });
@@ -92,4 +88,6 @@ function copy(s) {
 
   clip_area.remove();
 }
+  //made by Leviathan.9385
+  //Special thanks my teammates
 </script>
