@@ -38,7 +38,7 @@ $(function(){
     var unduplicatedArray = Array.from(new Set(flattenArray));
     $.ajax({
       dataType: "json",
-      url: "http://api.gw2tp.com/1/items?ids="+itemIDiArray.toString()+"&fields=name,sell,img",
+      url: "https://api.gw2tp.com/1/items?ids="+itemIDiArray.toString()+"&fields=name,sell,img",
       context: document.body
     }).done(function(data) {
         var itemData = data['results'];
