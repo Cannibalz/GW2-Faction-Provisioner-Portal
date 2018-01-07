@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <title>Faction Provisioner Portal</title>
   </head>
-    <body>
         <div>
             <table border="1" id="notsure" class="table-striped" style="margin: 0px auto;">
-            <tr>
-                <td>Faction Provisioner</td><td>WP</td><td>The cheapest items</td><td>Price</td>
-            </tr>
+                <tr>
+                   <td COLSPAN="4" ID="refreshHint"  align="center">this page will be freshed after 300 sec to get current tp price</td>
+                </tr>
+                <tr>
+                    <td>Faction Provisioner</td><td>WP</td><td>The cheapest items</td><td>Price</td>
+                </tr>
             </table>
         </div>
     </body>
 </html>
 <script>
-var GG = Array();
+var timeout = 300;
 
 $(function(){
     var npcInfo = [["Quartermaster Natomi","[&BN4HAAA=]"],["Supplymaster Kani","[&BOAHAAA=]"],["Quartermaster Vec","[&BAgIAAA=]"],
@@ -43,6 +45,20 @@ $(function(){
         GG = itemData;
         for(var i = 0;i < itemIDiArray.length;i++)
         {
+            switch (i)
+            {
+                case 0:
+                    $("#notsure tr:last").after('<tr><td COLSPAN="4" ID="refreshHint"  align="center">Verdant Brink</td></tr>');
+                    break;
+                case 5:
+                    $("#notsure tr:last").after('<tr><td COLSPAN="4" ID="refreshHint"  align="center">Auric Basin</td></tr>');
+                    break;
+                case 8:
+                    $("#notsure tr:last").after('<tr><td COLSPAN="4" ID="refreshHint"  align="center">Tangled Depths</td></tr>');
+                    break;
+            }
+
+
             var lowestItemPrice = 9999999;
             var lowestitemName = "";
             var itemImage = "";
@@ -75,7 +91,17 @@ $(function(){
             $("#notsure tr:last").after('<tr><td>'+npcInfo[i][0]+'</td><td>'+ "<a style='color:blue' onClick='copy(\"" + window.btoa(npcInfo[i][1]) + "\")' >" +npcInfo[i][1]+ "</a>" +'</td><td><img width="10%" height="10%" src="'+itemImage+'">'+lowestitemName+'</td><td>'+coinedPrice+'</td></tr>');
         }
     });
+    window.setInterval("refreshThisPage()",1000);
 });
+function refreshThisPage()
+{
+    timeout--;
+    $("#refreshHint").html("this page will be freshed after "+timeout+" sec to get current tp price");
+    if(timeout==0)
+    {
+        window.location.reload();
+    }
+}
 function copy(s) {
   $('body').append('<textarea id="clip_area"></textarea>');
 
