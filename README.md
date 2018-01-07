@@ -4,6 +4,7 @@
 
 # Usage
 Download & open FPPortal.html
+copy text to your clipboard while clicking on blue text(WP and item's name)
 
 # Requirement
 network
