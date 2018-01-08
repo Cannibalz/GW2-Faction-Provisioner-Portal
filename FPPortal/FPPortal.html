@@ -60,13 +60,14 @@
         }
     </style>
 </head>
+<body>
 <div>
     <table border="1" id="notsure" class="table-striped" style="margin: 0px auto;">
         <tr>
-            <td COLSPAN="5" ID="refreshHint"  align="center">this page will be freshed after 300 sec to get current tp price</td>
+            <td colspan="5" id="refreshHint"  align="center"> this page will be freshed after 300 sec to get current tp price </td>
         </tr>
         <tr>
-            <td class="checkBox"><button onclick="Merge()">√</button></td>
+            <td class="checkBox"></td>
             <td class="tdProvisioner">Provisioner</td>
             <td class="wp">Waypoint</td>
             <td class="shopList">Buy list</td>
@@ -160,6 +161,7 @@
                 lowestitemName = "<a style='color:blue' onClick='copy(\"" + window.btoa(lowestitemName) + "\")' >" + lowestitemName + "</a>";
                 $("#notsure tr:last").after('<tr><td class="checkBox"><input type="checkbox" id="checkbox'+i+'"></td><td>'+npcInfo[i][0]+'</td><td class="genwp">'+ "<a style='color:blue' onClick='copy(\"" + window.btoa(npcInfo[i][1]) + "\")' >" +npcInfo[i][1]+ "</a>" +'</td><td><img class="itemImg" src="'+itemImage+'"> '+lowestitemName+'</td><td style="text-align:right">'+coinedPrice+'</td></tr>');
             }
+            $("#notsure tr:last").after('<tr><td><button onclick="Merge()">√</button></td> <td colspan="4">click this button to copy all Waypoints that you selected</td></tr>');
         });
         window.setInterval("refreshThisPage()",1000);
     });
