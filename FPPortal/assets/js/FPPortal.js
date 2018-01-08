@@ -28,6 +28,7 @@
         [15391,14563,13976,10691,11921,11341],
         [36779,36812,36780,36806,36842,36844]];
     $(function(){
+        $('a').tooltip({trigger: 'click',animated: 'fade'});
         var flattenArray = [].concat.apply([], itemIDiArray).sort();
         var unduplicatedArray = Array.from(new Set(flattenArray));
         $.ajax({
@@ -79,12 +80,39 @@
                 var copper = stringPrice.substring(sLength-2,sLength) + "<img src='assets/Copper_coin.png'>";
                 coinedPrice += copper;
                 lowestitemName = "<a style='color:blue' onClick='copy(\"" + window.btoa(lowestitemName) + "\")' >" + lowestitemName + "</a>";
-                $("#notsure tr:last").after('<tr><td class="checkBox"><input type="checkbox" id="checkbox'+i+'"></td><td>'+npcInfo[i][0]+'</td><td class="genwp">'+ "<a style='color:blue' onClick='copy(\"" + window.btoa(npcInfo[i][1]) + "\")' >" +npcInfo[i][1]+ "</a>" +'</td><td><img class="itemImg" src="'+itemImage+'"> '+lowestitemName+'</td><td style="text-align:right">'+coinedPrice+'</td></tr>');
+                $("#notsure tr:last").after('<tr><td class="checkBox"><input type="checkbox" id="checkbox'+i+'"></td><td>'+npcInfo[i][0]+'</td><td class="genwp">'+ "<a style='color:blue' class='comeToDaddy' title='copied!' onClick='copy(\"" + window.btoa(npcInfo[i][1]) + "\")' >" +npcInfo[i][1]+ "</a>" +'</td><td><img class="itemImg" class="comeToDaddy" title="copied!" src="'+itemImage+'"> '+lowestitemName+'</td><td style="text-align:right">'+coinedPrice+'</td></tr>');
             }
-            $("#notsure tr:last").after('<tr><td><button onclick="Merge()">√</button></td> <td colspan="4">click this button to copy all Waypoints that you selected</td></tr>');
+            $("#notsure tr:last").after('<tr><td><button data-clipboard-text="" onclick="Merge()">√</button></td> <td colspan="4">click this button to copy all Waypoints that you selected</td></tr>');
         });
         window.setInterval("refreshThisPage()",1000);
     });
+
+
+
+    // function setTooltip(btn, message) {
+    //   $(btn).tooltip('hide')
+    //     .attr('data-original-title', message)
+    //     .tooltip('show');
+    // }
+    //
+    // function hideTooltip(btn) {
+    //   setTimeout(function() {
+    //     $(btn).tooltip('hide');
+    //   }, 1000);
+    // }
+
+    // var clipboard = new clipboard('button');
+    //
+    // clipboard.on('success', function(e) {
+    //   setTooltip(e.trigger, 'Copied!');
+    //   hideTooltip(e.trigger);
+    // });
+    //
+    // clipboard.on('error', function(e) {
+    //   setTooltip(e.trigger, 'Failed!');
+    //   hideTooltip(e.trigger);
+    // });
+
     function refreshThisPage()
     {
         timeout--;
