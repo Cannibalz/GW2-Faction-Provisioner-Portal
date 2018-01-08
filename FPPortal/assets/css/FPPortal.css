@@ -1,0 +1,51 @@
+button{
+    width: 24px;
+    height: 22px;
+    font-size: 12px;
+}
+
+.checkBox{
+    width: 26px;
+    text-align: center;
+}
+
+.tdProvisioner{
+    width: 174px;
+}
+
+.wp{
+    width: 114px;
+}
+
+.genwp{
+    width: 114px;
+    text-align: center;
+}
+
+.shopList{
+    width: 266px;
+}
+
+.price{
+    width: 110px;
+}
+
+.itemImg{
+    height: 22px;
+}
+
+.mapName{
+    text-align: center;
+}
+
+.vb{
+    background-color: #dff0d8;
+}
+
+.ab{
+    background-color: #d9edf7;
+}
+
+.td{
+    background-color: #f2dede;
+}
