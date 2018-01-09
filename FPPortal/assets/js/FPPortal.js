@@ -133,12 +133,19 @@
     function Merge(){
         var txt="";
         for (var i=0; i<12; i++){
-            if (document.getElementById("checkbox"+i).checked == true){
-                txt += npcInfo[i][0]+" "+npcInfo[i][1]+" ";
+            if($("#checkbox"+i).prop("checked"))
+            {
+              txt += npcInfo[i][1] + "  ";
             }
+            // if (document.getElementById("checkbox"+i).checked == true){
+            //     txt += npcInfo[i][0]+" "+npcInfo[i][1]+" ";
+            // }
         }
         copy(btoa(txt));
-    }
+    } //edited by xMarch.8416
+
+
+
     //made by Leviathan.9385
     //Special thanks :
     //  My toxic teammates
